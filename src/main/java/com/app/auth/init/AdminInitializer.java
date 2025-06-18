@@ -35,7 +35,7 @@ public class AdminInitializer {
 //            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
             user.setDOB(LocalDate.parse("1994-01-30"));
             user.setGender("Male");
-            user.setRole(Role.ADMIN);
+            user.setRole(Role.ROLE_ADMIN);
             userRepository.save(user);
             System.out.println("Default admin user created.");
         } else {

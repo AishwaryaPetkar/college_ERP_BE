@@ -14,6 +14,7 @@ import com.app.auth.entities.User;
 import com.app.auth.repository.UserRepository;
 import com.app.student.dto.StudentPersonalDetailsDTO;
 import com.app.student.entity.StudentPersonalDetails;
+import com.app.student.repository.StudentRepository;
 
 @Service
 public class StudentBasicInformationServiceImpl implements StudentBasicInformationService {
@@ -30,7 +31,8 @@ public class StudentBasicInformationServiceImpl implements StudentBasicInformati
 		try {
 			StudentPersonalDetails personalDetails = modelMapper.map(dto, StudentPersonalDetails.class);
 			String email = SecurityContextHolder.getContext().getAuthentication().getName();
-			User user = userRepository.findByUserName(email)
+
+			User user = userRepository.findByUserName(email)					
 			    .orElseThrow(() -> new UsernameNotFoundException("User not found"));
 			personalDetails.setUser(user);
 			studentRepository.save(personalDetails);

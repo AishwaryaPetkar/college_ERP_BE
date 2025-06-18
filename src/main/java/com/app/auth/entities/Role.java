@@ -1,5 +1,5 @@
 package com.app.auth.entities;
 
 public enum Role {
-	ADMIN, STUDENT, EMPLOYEE,USER
+	ROLE_ADMIN, ROLE_STUDENT, ROLE_EMPLOYEE,ROLE_USER
 }

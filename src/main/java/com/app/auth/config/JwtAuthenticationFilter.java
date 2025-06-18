@@ -43,6 +43,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 //		clause to prevent re-authenticating or interfering with existing security context.
 		if(username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 				var userDetails = userDetailService.loadUserByUsername(username);
+//				
 				if(jwtUtil.validateToken(jwt)) {
 					var authToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
 					authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
