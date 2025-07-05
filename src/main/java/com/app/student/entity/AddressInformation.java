@@ -1,6 +1,7 @@
 package com.app.student.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 import com.app.auth.entities.User;
 import lombok.*;
@@ -14,31 +15,23 @@ import lombok.*;
 @ToString
 public class AddressInformation {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    // Local Address
-    @Lob
-    private String localAddressLine;
-    private String localCityOrTaluka;
-    private String localDistrict;
-    private String localState;
-    private String localCountry;
-    private String localPinCode;
+	private String type; // "LOCAL" or "PERMANENT"
+	private boolean isSameAddress;
 
-    // Permanent Address
-    @Lob
-    private String permanentAddressLine;
-    private String permanentCityOrTaluka;
-    private String permanentDistrict;
-    private String permanentState;
-    private String permanentCountry;
-    private String permanentPinCode;
+	private String addressLine;
+	private String cityTaluka;
+	private String district;
+	private String state;
+	private String country;
+	private String pinCode;
 
-    // Association with User
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+	// Association with User
+	@ManyToOne
+	@JoinColumn(name = "user_id", nullable = false)
+	private User user;
 
 }
